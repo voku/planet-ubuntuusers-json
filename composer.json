@@ -1,0 +1,22 @@
+{
+    "name": "planet-ubuntuusers-json",
+    "description": "planet.ubuntuusers.de as json",
+    "config": {
+      "vendor-dir": "vendor/composer/",
+      "github-protocols": ["git", "https", "http"]
+    },
+    "require": {
+        "voku/twig-wrapper": "dev-master",
+        "voku/portable-utf8": "dev-master",
+        "simplepie/simplepie": "dev-master",
+        "ezyang/htmlpurifier": "dev-master"
+    },
+    "authors": [
+      {
+        "name": "Lars Moelleken",
+        "homepage": "http://www.moelleken.org/"
+      }
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

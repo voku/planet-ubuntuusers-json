@@ -1,0 +1,274 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "87d0ce2f1872cf2a6910360f1e503df0",
+    "packages": [
+        {
+            "name": "ezyang/htmlpurifier",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "80ebd4322e3b98bc25c3ed3effe99a1653bc00fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/80ebd4322e3b98bc25c3ed3effe99a1653bc00fc",
+                "reference": "80ebd4322e3b98bc25c3ed3effe99a1653bc00fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2014-02-04 20:17:24"
+        },
+        {
+            "name": "simplepie/simplepie",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplepie/simplepie.git",
+                "reference": "9a9faaa0d563426cf6d897c169373c5b62f1b252"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplepie/simplepie/zipball/9a9faaa0d563426cf6d897c169373c5b62f1b252",
+                "reference": "9a9faaa0d563426cf6d897c169373c5b62f1b252",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SimplePie": "library"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Parman",
+                    "homepage": "http://ryanparman.com/",
+                    "role": "Creator, alumnus developer"
+                },
+                {
+                    "name": "Geoffrey Sneddon",
+                    "homepage": "http://gsnedders.com/",
+                    "role": "Alumnus developer"
+                },
+                {
+                    "name": "Ryan McCue",
+                    "email": "me@ryanmccue.info",
+                    "homepage": "http://ryanmccue.info/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple Atom/RSS parsing library for PHP",
+            "homepage": "http://simplepie.org/",
+            "keywords": [
+                "atom",
+                "feeds",
+                "rss"
+            ],
+            "time": "2014-04-28 12:50:39"
+        },
+        {
+            "name": "twig/twig",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabpot/Twig.git",
+                "reference": "96336aba609af06e8722ddc17451ce93d70b54e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/96336aba609af06e8722ddc17451ce93d70b54e1",
+                "reference": "96336aba609af06e8722ddc17451ce93d70b54e1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.16-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2014-06-20 07:26:46"
+        },
+        {
+            "name": "voku/portable-utf8",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voku/portable-utf8.git",
+                "reference": "cab652b8593016ae4d4ca244127314af1f08aeac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/cab652b8593016ae4d4ca244127314af1f08aeac",
+                "reference": "cab652b8593016ae4d4ca244127314af1f08aeac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Hamid Sarfraz",
+                    "homepage": "http://pageconfig.com/"
+                },
+                {
+                    "name": "Lars Moelleken",
+                    "homepage": "http://www.moelleken.org/"
+                }
+            ],
+            "description": "Portable UTF-8 library",
+            "homepage": "https://github.com/voku/portable-utf8",
+            "keywords": [
+                "UTF",
+                "clean",
+                "php",
+                "utf8"
+            ],
+            "time": "2014-05-25 10:59:04"
+        },
+        {
+            "name": "voku/twig-wrapper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voku/twig-wrapper.git",
+                "reference": "efdf4898dd6f790fc4388d5a0a2c5742ab59aaa1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voku/twig-wrapper/zipball/efdf4898dd6f790fc4388d5a0a2c5742ab59aaa1",
+                "reference": "efdf4898dd6f790fc4388d5a0a2c5742ab59aaa1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "twig/twig": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "voku": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Lars Moelleken",
+                    "homepage": "http://www.moelleken.org/"
+                },
+                {
+                    "name": "Paul Waring",
+                    "homepage": "http://www.pwaring.com/"
+                }
+            ],
+            "description": "Wrapper for Twig templating system",
+            "homepage": "https://github.com/voku/twig-wrapper",
+            "keywords": [
+                "template",
+                "templating",
+                "twig",
+                "wrapper"
+            ],
+            "time": "2014-06-14 23:29:35"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "voku/twig-wrapper": 20,
+        "voku/portable-utf8": 20,
+        "simplepie/simplepie": 20,
+        "ezyang/htmlpurifier": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

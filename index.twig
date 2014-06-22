@@ -1,0 +1,16 @@
+<html>
+	<head>
+	</head>
+ 	<body>
+ 		{% for rss in rssArray['posts'] %}
+ 			<a href="{{ rss.link }}"
+ 				<h2>{{ rss.title | raw }}</h2>
+ 			</a>
+ 			<p>{{ rss.content | raw }}</p>
+
+ 			<br /><br />
+ 			<hr />
+ 			<br /><br />
+ 		{% endfor %}
+  	</body>
+</html>
