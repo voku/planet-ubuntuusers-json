@@ -1,22 +1,39 @@
 {
-    "name": "planet-ubuntuusers-json",
-    "description": "planet.ubuntuusers.de as json",
-    "config": {
-      "vendor-dir": "vendor/composer/",
-      "github-protocols": ["git", "https", "http"]
-    },
+    "name": "voku/planet-ubuntuusers-json",
+    "description": "Tiny PHP app that exposes planet.ubuntuusers.de as HTML and JSON/JSONP.",
+    "type": "project",
+    "license": "WTFPL",
+    "keywords": [
+        "json",
+        "php",
+        "planet",
+        "rss"
+    ],
     "require": {
-        "voku/twig-wrapper": "dev-master",
-        "voku/portable-utf8": "dev-master",
-        "simplepie/simplepie": "dev-master",
-        "ezyang/htmlpurifier": "dev-master"
+        "php": "^8.2",
+        "ext-json": "*",
+        "ext-pcre": "*",
+        "ext-xml": "*",
+        "ext-xmlreader": "*",
+        "ezyang/htmlpurifier": "^4.19",
+        "simplepie/simplepie": "^1.9",
+        "twig/twig": "^3.26"
     },
     "authors": [
-      {
-        "name": "Lars Moelleken",
-        "homepage": "http://www.moelleken.org/"
-      }
+        {
+            "name": "Lars Moelleken",
+            "homepage": "https://www.moelleken.org/"
+        }
     ],
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "lint": [
+            "php -l inc_global.php",
+            "php -l index.php",
+            "php -l json.php"
+        ]
+    }
 }

@@ -1,16 +1,28 @@
-<html>
-	<head>
-	</head>
- 	<body>
- 		{% for rss in rssArray['posts'] %}
- 			<a href="{{ rss.link }}"
- 				<h2>{{ rss.title | raw }}</h2>
- 			</a>
- 			<p>{{ rss.content | raw }}</p>
+<!doctype html>
+<html lang="en">
+   <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>{{ rssArray.meta.title }}</title>
+   </head>
+   <body>
+       <main>
+           <h1>{{ rssArray.meta.title }}</h1>
 
- 			<br /><br />
- 			<hr />
- 			<br /><br />
- 		{% endfor %}
-  	</body>
+           {% if rssArray.error %}
+               <p>Feed refresh failed: {{ rssArray.error }}</p>
+           {% endif %}
+
+           {% for rss in rssArray.posts %}
+               <article>
+                   <h2><a href="{{ rss.link }}">{{ rss.title }}</a></h2>
+                   <p><small>{{ rss.date }}{% if rss.author %} · {{ rss.author }}{% endif %}</small></p>
+                   <div>{{ rss.content | raw }}</div>
+               </article>
+               <hr>
+           {% else %}
+               <p>No posts are available right now.</p>
+           {% endfor %}
+       </main>
+   </body>
 </html>

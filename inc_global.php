@@ -1,39 +1,97 @@
 <?php
 
-require_once 'vendor/composer/autoload.php';
+declare(strict_types=1);
 
-// init
-$config = HTMLPurifier_Config::createDefault();
-$purifier = new HTMLPurifier($config);
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
-$rssArray = array();
-$rssUrl = 'http://planet.ubuntuusers.de/feeds/full/10/';
+require_once __DIR__ . '/vendor/autoload.php';
 
-$feed = new SimplePie();
+const FEED_URL = 'http://planet.ubuntuusers.de/feeds/full/10/';
 
-$feed->set_feed_url($rssUrl);
-$feed->set_output_encoding('UTF-8');	
-$feed->enable_order_by_date(false);
-$feed->enable_cache(false);
-$feed->handle_content_type();
-$feed->init();
-$feed->handle_content_type();
+function getPlanetFeed(): array
+{
+    $purifier = createPurifier();
+    $feed = new SimplePie();
 
-// fetch global title
-$globalTitle = $feed->get_title();
+    $feed->set_feed_url(FEED_URL);
+    $feed->set_output_encoding('UTF-8');
+    $feed->enable_order_by_date(false);
+    $feed->enable_cache(true);
+    $feed->set_cache_duration(300);
+    $feed->set_cache_location(getRuntimeCacheDirectory('simplepie'));
+    $feed->init();
 
-// fetch rss-items
-if ($feed->data) {
+    $posts = [];
 
-	$i = 0;
-	foreach($feed->get_items() as $item) {
-		$rssArray['posts'][$i]['md5'] = md5($item->get_title() . $item->get_date('j M Y'));
-		$rssArray['posts'][$i]['link'] = $item->get_permalink();
-		$rssArray['posts'][$i]['title'] = $item->get_title();
-		$rssArray['posts'][$i]['date'] = $item->get_date('j M Y');
-		$rssArray['posts'][$i]['content'] = $item->get_content();
-		$rssArray['posts'][$i]['author'] = $item->get_author();
+    foreach ($feed->get_items() ?? [] as $item) {
+        $title = purifyHtml($purifier, $item->get_title());
+        $date = (string) ($item->get_date(DATE_ATOM) ?: '');
 
-		$i++;
-	}
+        $posts[] = [
+            'md5' => md5($title . $date),
+            'link' => (string) ($item->get_permalink() ?: ''),
+            'title' => $title,
+            'date' => $date,
+            'content' => purifyHtml($purifier, $item->get_content()),
+            'author' => extractAuthorName($item),
+        ];
+    }
+
+    return [
+        'meta' => [
+            'title' => (string) ($feed->get_title() ?: 'planet.ubuntuusers.de'),
+            'source' => FEED_URL,
+            'generated_at' => gmdate(DATE_ATOM),
+        ],
+        'posts' => $posts,
+        'error' => $feed->error() ?: null,
+    ];
+}
+
+function createPurifier(): HTMLPurifier
+{
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('Cache.SerializerPath', getRuntimeCacheDirectory('htmlpurifier'));
+
+    return new HTMLPurifier($config);
+}
+
+function getRuntimeCacheDirectory(string $suffix): string
+{
+    $path = sys_get_temp_dir() . '/planet-ubuntuusers-json/' . $suffix;
+
+    if (!is_dir($path) && !mkdir($path, 0777, true) && !is_dir($path)) {
+        throw new RuntimeException('Unable to create cache directory: ' . $path);
+    }
+
+    return $path;
+}
+
+function purifyHtml(HTMLPurifier $purifier, ?string $html): string
+{
+    return $purifier->purify((string) ($html ?? ''));
+}
+
+function extractAuthorName(object $item): string
+{
+    $author = $item->get_author();
+
+    if (!is_object($author)) {
+        return '';
+    }
+
+    foreach (['get_name', 'get_email', 'get_link'] as $method) {
+        if (!method_exists($author, $method)) {
+            continue;
+        }
+
+        $value = trim((string) $author->{$method}());
+
+        if ($value !== '') {
+            return $value;
+        }
+    }
+
+    return '';
 }

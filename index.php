@@ -1,9 +1,15 @@
 <?php
 
-require_once('inc_global.php');
+declare(strict_types=1);
 
-$twig = new \voku\twig\TwigWrapper('index.twig', array(__DIR__), array('cache' => false));
+require_once __DIR__ . '/inc_global.php';
 
-$twig->assign('rssArray', $rssArray);
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__);
+$twig = new \Twig\Environment($loader, [
+    'cache' => false,
+    'strict_variables' => true,
+]);
 
-echo $twig->render();
+echo $twig->render('index.twig', [
+    'rssArray' => getPlanetFeed(),
+]);
