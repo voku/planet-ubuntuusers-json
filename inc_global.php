@@ -2,9 +2,6 @@
 
 declare(strict_types=1);
 
-use HTMLPurifier;
-use HTMLPurifier_Config;
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 const FEED_URL = 'http://planet.ubuntuusers.de/feeds/full/10/';
